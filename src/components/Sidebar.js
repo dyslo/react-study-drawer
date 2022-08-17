@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import SidebarItem from './Sidebar/SidebarItem';
 import { 
-    ChevronRight20Filled,
+    ChevronLeft20Filled,
     Home24Filled,
     Search24Filled,
     Map24Filled,
@@ -21,7 +21,7 @@ const Sidebar = () => {
     return (
         <>
             <Styled.Wrapper active={isExpanded}>
-                <Styled.ExpandButton active={isExpanded} onClick={handleExpand}><ChevronRight20Filled/></Styled.ExpandButton>
+                <Styled.ExpandButton active={isExpanded} onClick={handleExpand}><ChevronLeft20Filled/></Styled.ExpandButton>
                 <Styled.List>
                     <SidebarItem icon={<Home24Filled/>} title="Home" page="/"/>
                     <SidebarItem icon={<Search24Filled/>} title="Find Places" page="/test"/>
