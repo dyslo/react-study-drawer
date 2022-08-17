@@ -19,6 +19,7 @@ const Styled = {
         width: 200px;
         height: 50px;
         margin: 10px 0;
+        display: flex;
     `,
 
     Icon: styled.div`
@@ -34,11 +35,10 @@ const Styled = {
         float: right;
         width: 150px;
         height: 50px;
-        text-align: center;
         line-height: 50px;
         text-align: left;
         font-size: 20px;
-        font-weight: 200;
+        font-weight: 300;
     `
 };
 

@@ -43,15 +43,10 @@ const Styled = {
         background-color: #f0f0f0;
         transition: .3s width ease;
         overflow: hidden;
+        box-shadow: 5px 0 5px -5px rgba(0,0,0,0.2), 8px 0 10px 0px rgba(0,0,0,0.1);
         ${(props) => props.active &&`
             width: 50px;
         `}
-    `,
-
-    Divider: styled.hr`
-        margin: 10px 0;
-        width: 200px;
-        float: left;
     `,
 
     ExpandButton: styled.button`
