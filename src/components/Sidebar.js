@@ -48,6 +48,8 @@ const Styled = {
         background-color: #f0f0f0;
         transition: .3s width ease;
         box-shadow: 5px 0 5px -5px rgba(0,0,0,0.2), 8px 0 10px 0px rgba(0,0,0,0.1);
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
         ${(props) => props.active &&`
             width: 50px;
         `}
@@ -67,7 +69,7 @@ const Styled = {
         cursor: pointer;
         padding: 0;
         transition: .3s transform ease;
-        box-shadow: 0 0 10px 0px rgba(0,0,0,0.3);
+        box-shadow: 0 0 5px 0px rgba(0,0,0,0.2), 0 0 10px 0px rgba(0,0,0,0.1);
         ${(props) => props.active && `
             transform: rotate(-180deg);
         `}
