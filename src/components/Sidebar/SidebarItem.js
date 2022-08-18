@@ -29,7 +29,7 @@ const Styled = {
         width: 0;
         height: 50px;
         background-color: skyblue;
-        transition: .2s all ease;
+        transition: .3s all ease;
         ${(props) => props.active && `
             width: 100%;
         `}
