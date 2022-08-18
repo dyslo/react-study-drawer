@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
-import { VaultRegular } from '@fluentui/react-icons';
 
 const SidebarItem = (props) => {
     const { icon, title, page } = props;
     const loc = useLocation();
-    //console.log((loc.pathname === page));
     return (
         <Link to={page}>
             <Styled.Wrapper active={(loc.pathname === page) ? true : false}>
