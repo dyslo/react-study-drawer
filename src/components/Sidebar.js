@@ -14,19 +14,55 @@ import {
 const Sidebar = () => {
     const [isExpanded, setisExpanded] = useState(true);
 
+    //console.log(location.pathname);
+
     const handleExpand = () => {
-        setisExpanded((prev) => !prev);
+        setisExpanded(!isExpanded);
     };
+
+    const SidebarItems = {
+        Home: {
+            "icon": <Home24Filled/>,
+            "title": "Home",
+            "page": "/"
+        },
+
+        FindPlaces: {
+            "icon": <Search24Filled/>,
+            "title": "Find Places",
+            "page": "/test"
+        },
+
+        ViewMap: {
+            "icon": <Map24Filled/>,
+            "title": "View Map",
+            "page": "/test2"
+        },
+
+        ContactUs: {
+            "icon": <Call24Filled/>,
+            "title": "Contact Us",
+            "page": "/test3"
+        }
+    }
 
     return (
         <>
             <Styled.Wrapper active={isExpanded}>
                 <Styled.ExpandButton active={isExpanded} onClick={handleExpand}><ChevronLeft20Filled/></Styled.ExpandButton>
                 <Styled.List>
-                    <SidebarItem icon={<Home24Filled/>} title="Home" page="/"/>
+                    {Object.entries(SidebarItems).map(([key, value]) => {
+                        return <SidebarItem 
+                        key={key} 
+                        icon={value.icon} 
+                        title={value.title} 
+                        page={value.page} />
+                    })}
+
+                    {/* <SidebarItem icon={<Home24Filled/>} title="Home" page="/"/>
                     <SidebarItem icon={<Search24Filled/>} title="Find Places" page="/test"/>
                     <SidebarItem icon={<Map24Filled/>} title="View Map" page=""/>
-                    <SidebarItem icon={<Call24Filled/>} title="Contact Us" page=""/>
+                    <SidebarItem icon={<Call24Filled/>} title="Contact Us" page=""/> */}
                 </Styled.List>
             </Styled.Wrapper>
             <Outlet />

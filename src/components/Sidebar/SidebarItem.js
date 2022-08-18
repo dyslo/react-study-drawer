@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { VaultRegular } from '@fluentui/react-icons';
 
 const SidebarItem = (props) => {
     const { icon, title, page } = props;
+    const loc = useLocation();
+    //console.log((loc.pathname === page));
     return (
         <Link to={page}>
-            <Styled.Wrapper>
+            <Styled.Wrapper active={(loc.pathname === page) ? true : false}>
                 <Styled.Icon>{icon}</Styled.Icon>
                 <Styled.Title>{title}</Styled.Title>
             </Styled.Wrapper>
@@ -20,6 +23,9 @@ const Styled = {
         height: 50px;
         margin: 10px 0;
         display: flex;
+        ${(props) => props.active &&`
+            background-color: #ccc;
+        `}
     `,
 
     Icon: styled.div`

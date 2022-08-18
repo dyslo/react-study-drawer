@@ -11,6 +11,8 @@ const Router = () => {
                 <Route path="/" element={<Sidebar />}>
                     <Route path="/" element={<App />}></Route>
                     <Route path="/test" element={<Test />}></Route>
+                    <Route path="/test2" element={<Test />}></Route>
+                    <Route path="/test3" element={<Test />}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>
