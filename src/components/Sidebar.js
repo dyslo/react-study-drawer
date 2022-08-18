@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import SidebarItem from './Sidebar/SidebarItem';
@@ -8,15 +8,22 @@ import { ChevronLeft20Filled } from '@fluentui/react-icons';
 
 const Sidebar = () => {
     const [isExpanded, setisExpanded] = useState(true);
-    const handleExpand = () => {
+    const handleExpand = (e) => {
+        e.stopPropagation();
         setisExpanded(!isExpanded);
     };
 
+    useEffect(() => {
+        const event = window.addEventListener("click", (e) =>{
+            if (e.target != <Styled.Wrapper/>) setisExpanded(true);
+        });
+    });
+
     return (
         <>
-            <Styled.Wrapper active={isExpanded}>
+            <Styled.Wrapper onClick={(e) => e.stopPropagation()} active={isExpanded}>
                 <Styled.ExpandButton active={isExpanded} onClick={handleExpand}><ChevronLeft20Filled/></Styled.ExpandButton>
-                <Styled.List>
+                <Styled.List onClick={(e) => e.stopPropagation()}>
                     {Object.entries(SidebarItems).map(([key, value]) => {
                         return <SidebarItem 
                         key={key} 
