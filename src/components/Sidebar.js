@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import SidebarItem from './Sidebar/SidebarItem';
 import SidebarItems from '../SidebarItems';
@@ -8,6 +8,7 @@ import { ChevronLeft20Filled } from '@fluentui/react-icons';
 
 const Sidebar = () => {
     const [isExpanded, setisExpanded] = useState(true);
+    const loc = useLocation();
     const handleExpand = (e) => {
         e.stopPropagation();
         setisExpanded(!isExpanded);
@@ -27,6 +28,7 @@ const Sidebar = () => {
                 <Styled.List active={isExpanded} onClick={(e) => e.stopPropagation()}>
                     {Object.entries(SidebarItems).map(([key, value]) => {
                         return <SidebarItem 
+                        active={(loc.pathname === value.page) ? true : false}
                         key={key} 
                         icon={value.icon} 
                         title={value.title} 

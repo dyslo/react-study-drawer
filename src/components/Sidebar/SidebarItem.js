@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SidebarItem = (props) => {
-    const { icon, title, page } = props;
-    const loc = useLocation();
+    const { icon, title, page, active } = props;
     return (
         <Link to={page}>
-            <Styled.Wrapper active={(loc.pathname === page) ? true : false}>
+            <Styled.Wrapper active={active}>
+                <Styled.Selected active={active}></Styled.Selected>
                 <Styled.Icon>{icon}</Styled.Icon>
                 <Styled.Title>{title}</Styled.Title>
             </Styled.Wrapper>
@@ -21,9 +21,17 @@ const Styled = {
         height: 50px;
         margin: 10px 0;
         display: flex;
-        ${(props) => props.active &&`
-            background-color: skyblue;
+    `,
 
+    Selected: styled.div`
+        position: absolute;
+        z-index: -1;
+        width: 0;
+        height: 50px;
+        background-color: skyblue;
+        transition: .2s all ease;
+        ${(props) => props.active && `
+            width: 100%;
         `}
     `,
 
