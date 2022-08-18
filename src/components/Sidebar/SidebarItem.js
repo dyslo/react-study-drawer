@@ -22,7 +22,8 @@ const Styled = {
         margin: 10px 0;
         display: flex;
         ${(props) => props.active &&`
-            background-color: #ccc;
+            background-color: skyblue;
+
         `}
     `,
 
