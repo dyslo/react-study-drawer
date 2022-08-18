@@ -15,7 +15,7 @@ const Sidebar = () => {
     const [isExpanded, setisExpanded] = useState(true);
 
     const handleExpand = () => {
-        setisExpanded((prev) => !prev);
+        setisExpanded(!isExpanded);
     };
 
     return (
