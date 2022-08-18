@@ -8,9 +8,6 @@ import { ChevronLeft20Filled } from '@fluentui/react-icons';
 
 const Sidebar = () => {
     const [isExpanded, setisExpanded] = useState(true);
-
-    //console.log(location.pathname);
-
     const handleExpand = () => {
         setisExpanded(!isExpanded);
     };
@@ -27,11 +24,6 @@ const Sidebar = () => {
                         title={value.title} 
                         page={value.page} />
                     })}
-
-                    {/* <SidebarItem icon={<Home24Filled/>} title="Home" page="/"/>
-                    <SidebarItem icon={<Search24Filled/>} title="Find Places" page="/test"/>
-                    <SidebarItem icon={<Map24Filled/>} title="View Map" page=""/>
-                    <SidebarItem icon={<Call24Filled/>} title="Contact Us" page=""/> */}
                 </Styled.List>
             </Styled.Wrapper>
             <Outlet />

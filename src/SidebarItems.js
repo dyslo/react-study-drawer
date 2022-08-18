@@ -1,5 +1,4 @@
 import { 
-    ChevronLeft20Filled,
     Home24Filled,
     Search24Filled,
     Map24Filled,
