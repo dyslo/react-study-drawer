@@ -15,6 +15,7 @@ const Sidebar = () => {
 
     useEffect(() => {
         const event = window.addEventListener("click", (e) =>{
+            if (isExpanded) return;
             if (e.target != <Styled.Wrapper/>) setisExpanded(true);
         });
     });
@@ -23,7 +24,7 @@ const Sidebar = () => {
         <>
             <Styled.Wrapper onClick={(e) => e.stopPropagation()} active={isExpanded}>
                 <Styled.ExpandButton active={isExpanded} onClick={handleExpand}><ChevronLeft20Filled/></Styled.ExpandButton>
-                <Styled.List onClick={(e) => e.stopPropagation()}>
+                <Styled.List active={isExpanded} onClick={(e) => e.stopPropagation()}>
                     {Object.entries(SidebarItems).map(([key, value]) => {
                         return <SidebarItem 
                         key={key} 
@@ -46,7 +47,6 @@ const Styled = {
         width: 200px;
         background-color: #f0f0f0;
         transition: .3s width ease;
-        overflow: hidden;
         box-shadow: 5px 0 5px -5px rgba(0,0,0,0.2), 8px 0 10px 0px rgba(0,0,0,0.1);
         ${(props) => props.active &&`
             width: 50px;
@@ -54,16 +54,20 @@ const Styled = {
     `,
 
     ExpandButton: styled.button`
-        width: 50px;
+        position: absolute;
+        width: 30px;
         height: 30px;
-        float: right;
+        border-radius: 50px;
+        top: 50%;
+        right: -20px;
         margin: 5px 0;
         outline: none;
         border: none;
-        background-color: transparent;
+        background-color: white;
         cursor: pointer;
         padding: 0;
         transition: .3s transform ease;
+        box-shadow: 0 0 10px 0px rgba(0,0,0,0.3);
         ${(props) => props.active && `
             transform: rotate(-180deg);
         `}
@@ -74,6 +78,11 @@ const Styled = {
         padding-top: 30px;
         min-height: 50px;
         float: left;
+        overflow: hidden;
+        transition: .3s width ease;
+        ${(props) => props.active &&`
+            width: 50px;
+        `}
     `,
 };
 
