@@ -5,30 +5,35 @@ import {
     Call24Filled
 } from '@fluentui/react-icons'
 
-const SidebarItems = {
-    Home: {
-        "icon": <Home24Filled/>,
-        "title": "Home",
-        "page": "/"
+const SidebarItems = [
+    {
+        id: "Home",
+        type: "item",
+        icon: <Home24Filled/>,
+        title: "Home",
+        page: "/"
     },
-
-    FindPlaces: {
-        "icon": <Search24Filled/>,
-        "title": "Find Places",
-        "page": "/test"
+    {
+        id: "Search",
+        type: "item",
+        icon: <Search24Filled/>,
+        title: "Search",
+        page: "/test"
     },
-
-    ViewMap: {
-        "icon": <Map24Filled/>,
-        "title": "View Map",
-        "page": "/test2"
+    {
+        id: "Map",
+        type: "item",
+        icon: <Map24Filled/>,
+        title: "Map",
+        page: "/test2"
     },
-
-    ContactUs: {
-        "icon": <Call24Filled/>,
-        "title": "Contact Us",
-        "page": "/routetest/1"
+    {
+        id: "Contact Us",
+        type: "item",
+        icon: <Call24Filled/>,
+        title: "Contact Us",
+        page: "/routetest/1"
     }
-}
+]
 
 export default SidebarItems;

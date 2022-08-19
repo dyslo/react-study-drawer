@@ -26,13 +26,15 @@ const Sidebar = () => {
             <Styled.Wrapper ref={sRef} active={isExpanded}>
                 <Styled.ExpandButton active={isExpanded} onClick={handleExpand}><ChevronLeft20Filled/></Styled.ExpandButton>
                 <Styled.List active={isExpanded}>
-                    {Object.entries(SidebarItems).map(([key, value]) => {
+                    {SidebarItems.map(({ id, type, icon, title, page}) => {
+                        if (type === "item") {
                         return <SidebarItem 
-                        active={(loc.pathname === value.page) ? true : false}
-                        key={key} 
-                        icon={value.icon} 
-                        title={value.title} 
-                        page={value.page} />
+                        active={(loc.pathname === page) ? true : false}
+                        key={id} 
+                        icon={icon} 
+                        title={title} 
+                        page={page} />
+                        }
                     })}
                 </Styled.List>
             </Styled.Wrapper>
@@ -77,7 +79,7 @@ const Styled = {
         `}
     `,
 
-    List: styled.div`
+    List: styled.ul`
         width: 200px;
         padding-top: 30px;
         min-height: 50px;

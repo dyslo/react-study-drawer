@@ -16,7 +16,7 @@ const SidebarItem = (props) => {
 };
 
 const Styled = {
-    Wrapper: styled.div`
+    Wrapper: styled.li`
         width: 200px;
         height: 50px;
         margin: 10px 0;
@@ -51,7 +51,7 @@ const Styled = {
         line-height: 50px;
         text-align: left;
         font-size: 20px;
-        font-weight: 300;
+        font-weight: 400;
     `
 };
 
