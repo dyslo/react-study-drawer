@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import SidebarItem from './Sidebar/SidebarItem';
@@ -9,23 +9,24 @@ import { ChevronLeft20Filled } from '@fluentui/react-icons';
 const Sidebar = () => {
     const [isExpanded, setisExpanded] = useState(true);
     const loc = useLocation();
-    const handleExpand = (e) => {
-        e.stopPropagation();
+    const sRef = useRef(null);
+    const handleExpand = () => {
         setisExpanded(!isExpanded);
     };
 
     useEffect(() => {
-        const event = window.addEventListener("click", (e) =>{
+        const event = window.addEventListener("mousedown", (e) =>{
+            //console.log(e.path.includes(sRef.current));
             if (isExpanded) return;
-            if (e.target != <Styled.Wrapper/>) setisExpanded(true);
+            if (e.target !== sRef.current && e.path.includes(sRef.current) === false) setisExpanded(true);
         });
     });
 
     return (
         <>
-            <Styled.Wrapper onClick={(e) => e.stopPropagation()} active={isExpanded}>
+            <Styled.Wrapper ref={sRef} active={isExpanded}>
                 <Styled.ExpandButton active={isExpanded} onClick={handleExpand}><ChevronLeft20Filled/></Styled.ExpandButton>
-                <Styled.List active={isExpanded} onClick={(e) => e.stopPropagation()}>
+                <Styled.List active={isExpanded}>
                     {Object.entries(SidebarItems).map(([key, value]) => {
                         return <SidebarItem 
                         active={(loc.pathname === value.page) ? true : false}
