@@ -31,11 +31,18 @@ const Sidebar = () => {
                         return <SidebarItem 
                         active={(loc.pathname === page) ? true : false}
                         key={id} 
+                        type={type}
                         icon={icon} 
                         title={title} 
                         page={page} />
                         }
                     })}
+                </Styled.List>
+                <Styled.Divider/>
+                <Styled.List>
+                    <Styled.List active={isExpanded}>
+                        <SidebarItem key="link1" type="link" icon="" title="Link 1" page="" />
+                    </Styled.List>
                 </Styled.List>
             </Styled.Wrapper>
             <Outlet />
@@ -54,6 +61,7 @@ const Styled = {
         box-shadow: 5px 0 5px -5px rgba(0,0,0,0.2), 8px 0 10px 0px rgba(0,0,0,0.1);
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
+        padding-top: 30px;
         ${(props) => props.active &&`
             width: 50px;
         `}
@@ -64,8 +72,8 @@ const Styled = {
         width: 30px;
         height: 30px;
         border-radius: 50px;
-        top: 50%;
-        right: -20px;
+        top: 10px;
+        right: -15px;
         margin: 5px 0;
         outline: none;
         border: none;
@@ -79,9 +87,13 @@ const Styled = {
         `}
     `,
 
+    Divider: styled.hr`
+        width: auto;
+        margin: 10px;
+    `,
+
     List: styled.ul`
         width: 200px;
-        padding-top: 30px;
         min-height: 50px;
         float: left;
         overflow: hidden;
@@ -89,6 +101,15 @@ const Styled = {
         ${(props) => props.active &&`
             width: 50px;
         `}
+    `,
+
+    SearchBox: styled.input`
+        width: 170px;
+        height: 30px;
+        background-color: rgba(0,0,0,0.3);
+        border-radius: 10px;
+        outline: none;
+        border: 0;
     `,
 };
 
