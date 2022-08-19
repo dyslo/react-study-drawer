@@ -4,12 +4,15 @@ import Sidebar from './components/Sidebar';
 import App from './App';
 import Test from './pages/Test';
 import RouteTest from './pages/RouteTest';
+import Layout from './Layout';
+import { Reset } from "styled-reset";
 
 const Router = () => {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Sidebar />}>
+            <Reset />
+            <Layout>
+                <Routes>
                     <Route path="/" element={<App />}></Route>
                     <Route path="/test" element={<Test />}></Route>
                     <Route path="/test2" element={<Test />}></Route>
@@ -17,8 +20,8 @@ const Router = () => {
                     <Route path="/routetest" element={<RouteTest/>}>
                         <Route path=":id" element={<RouteTest />}></Route>
                     </Route>
-                </Route>
-            </Routes>
+                </Routes>
+            </Layout>
         </BrowserRouter>
     );
 };
