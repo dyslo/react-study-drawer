@@ -16,7 +16,6 @@ const Sidebar = () => {
 
     useEffect(() => {
         const event = window.addEventListener("mousedown", (e) =>{
-            //console.log(e.path.includes(sRef.current));
             if (isExpanded) return;
             if (e.target !== sRef.current && e.path.includes(sRef.current) === false) setisExpanded(true);
         });
